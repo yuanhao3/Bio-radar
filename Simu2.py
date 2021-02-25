@@ -19,8 +19,8 @@ var = 4  # 4096点采样
 # var = int(input('本程序作1024*N点的傅里叶变换，请输入采样周期：'))
 N = list(range(1024 * var))
 
-fs = 102.4  
-# 采样频率102.4Hz# fs = int(input('请输入采样频率：'))
+fs = 102.4  # 采样频率102.4Hz
+# fs = int(input('请输入采样频率：'))
 t = list(i / fs for i in N)
 
 f = fs / (1024 * var)  # 分辨频率
@@ -129,7 +129,7 @@ def respir_heart_Stimulate(respir_ratio, f_respir_start, f_respir_ending, d_resp
                 title_0 = 'Respir_ratio' + str(respir_ratio)
                 title_1 = '    Respiration '+str(round(60*f_respir, 2))+'pm_Heartbeat '+str(round(60*f_heart, 2))+'pm   '
                 title_2 = 'Respiration '+str(round(2000*d_respir, 2))+'mm_Heartbeat '+str(round(2000*d_heart, 2))+'mm'
-                # plt.ion()
+                plt.ion()
                 plt.figure(figsize=(30, 15))
 
                 # 呼吸与心跳原始波形图
@@ -157,7 +157,7 @@ def respir_heart_Stimulate(respir_ratio, f_respir_start, f_respir_ending, d_resp
                 plt.plot(n, y_2[0:121])
                 plt.title('Frequency domain diagram of 24GHz radar signal')
 
-                # plt.show()
+                plt.show()
 
                 dir_name = 'E:/yuanhao_python_work/Bio_Radar/Simulation_/Simu2_Figure/'
                 figure_name_0 = '呼吸比' + str(respir_ratio)
@@ -166,7 +166,7 @@ def respir_heart_Stimulate(respir_ratio, f_respir_start, f_respir_ending, d_resp
                 filename = dir_name + figure_name_0 + figure_name_1 + figure_name_2 + '.png'
 
                 plt.savefig(filename)
-                # plt.pause(1)
+                plt.pause(1)
                 plt.close()
 
 
