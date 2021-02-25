@@ -16,4 +16,4 @@ Some formulas and diagrams is needed，Please download README.doc
 
 两种频率下雷达接收信号的区别是什么?
 
-不可避免要涉及到一些公式和图片，请下载README.doc
+不可避免要涉及到一些公式和图片，请下载README.pdf
