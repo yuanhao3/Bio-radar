@@ -1,6 +1,6 @@
 """
-呼吸比为1：1
-采样频率102.4Hz，采样时间40s，采样点数4096点（可手动设置，Line16&Line20 取消注释即可）
+呼吸比为respir_ratio
+采样频率102.4Hz，采样时间40s，采样点数4096点（可手动设置，Line19&Line23 取消注释即可）
 5.8GHz 和 24GHz 的 时域与频域图像
 
 为方便观察，程序绘出每一幅图像后1s自动关闭。
@@ -15,12 +15,12 @@ from matplotlib import pyplot as plt
 pi = np.pi
 f_heart = 1.2  # 心跳频率固定为1.2Hz
 
-# var = int(input('本程序作1024*N点的傅里叶变换，请输入采样周期：'))
 var = 4  # 4096点采样
+# var = int(input('本程序作1024*N点的傅里叶变换，请输入采样周期：'))
 N = list(range(1024 * var))
 
-# fs = int(input('请输入采样频率：'))
-fs = 102.4  # 采样频率102.4Hz
+fs = 102.4  
+# 采样频率102.4Hz# fs = int(input('请输入采样频率：'))
 t = list(i / fs for i in N)
 
 f = fs / (1024 * var)  # 分辨频率
