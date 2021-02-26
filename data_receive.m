@@ -31,7 +31,6 @@ while(1)
         if (mod(cnt,80) == 0)
            for n=1:1:8
            figure(1);
-           subplot(3,1,1);
            y(i) = str2num(data((i-1)*10+1:(i-1)*10+8));
            %y1(i) = bitshift(y(i),-4);
            y1(i) = y(i)*3/4095;
@@ -40,7 +39,7 @@ while(1)
            end
            if(i==9)
            figure(1);
-           subplot(3,1,1);    
+           subplot(2,1,1);    
            x = ((time-8)*0.01:0.01:time*0.01-0.01);
            y2 = y1((i-8):(i-1));
            plot(x,y2,'r');
@@ -62,7 +61,7 @@ while(1)
            save('xxx','radar_data');
            var=0;
            t1=1:4096;
-           subplot 312;
+           subplot(2,1,2);
            plot(t1,radar_data);
            drawnow;
            hold on;
