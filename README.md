@@ -6,6 +6,8 @@
 
 // bio-radar.c  雷达DSP控制程序
 
+// data_receive.m matlab接收雷达串口发送的数据并实时绘图
+
 
 用于探测人体的呼吸与心跳的FMCW生物雷达
 
