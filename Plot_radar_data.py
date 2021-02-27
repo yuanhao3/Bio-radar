@@ -18,24 +18,31 @@ def Readname(filepath):
     return all_datafile_name
 
 
+def Load_data(filename):
+    radar_data = loadmat(filename)
+    keys = radar_data.keys()
+    keys = str(keys)
+    data_key = ''
+
+    # loadmat函数返回字典，数据存储在最后一个key中
+    for i in range(-4, -1000, -1):
+        if keys[i] == '\'':
+            break
+        data_key = keys[i] + data_key
+
+    radar_data = radar_data[data_key]
+    radar_data = radar_data[0]
+
+    return radar_data
+
+
 def Data_plot(time_queue, all_datafile_name):
     for datafile_name in all_datafile_name:
         filename = filepath + '/' + datafile_name
-        
+
         # 防止加载非.mat文件
         if filename[-1] == 't':
-            radar_data = loadmat(filename)
-            keys = radar_data.keys()
-            keys = str(keys)
-            data_key = ''
-            
-            # loadmat函数返回字典，数据存储在最后一个key中
-            for i in range(-4, -1000, -1):
-                if keys[i] == '\'':
-                    break
-                data_key = keys[i] + data_key
-            radar_data = radar_data[data_key]
-            radar_data = radar_data[0]
+            radar_data = Load_data(filename)
 
             # 绘图
             # plt.ion()
@@ -45,9 +52,7 @@ def Data_plot(time_queue, all_datafile_name):
             if len(time_queue) == len(radar_data):
                 plt.plot(time_queue, radar_data)
                 plt.title(datafile_name)
-
                 # plt.show()
-
                 dir_name = 'E:/yuanhao_python_work/Bio_Radar/Date_Process/Data_Plot/'
                 filename = dir_name + datafile_name + '.png'
 
@@ -62,5 +67,3 @@ if __name__ == '__main__':
     all_datafile_name = Readname(filepath)
     time_queue = [i/102.4 for i in range(4096)]
     Data_plot(time_queue, all_datafile_name)
-
-
