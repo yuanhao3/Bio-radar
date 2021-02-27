@@ -30,41 +30,42 @@ while(1)
         end
         if (mod(cnt,80) == 0)
            for n=1:1:8
-           y(i) = str2num(data((i-1)*10+1:(i-1)*10+8));
-           %y1(i) = bitshift(y(i),-4);
-           y1(i) = y(i)*3/4095;
-           i=i+1;
-           time=time+1;
+               y(i) = str2num(data((i-1)*10+1:(i-1)*10+8));
+               %y1(i) = bitshift(y(i),-4);
+               y1(i) = y(i)*3/4095;
+               i=i+1;
+               time=time+1;
            end
            if(i==9)
-           figure(1);
-           subplot(2,1,1);    
-           x = ((time-8)*0.01:0.01:time*0.01-0.01);
-           y2 = y1((i-8):(i-1));
-           plot(x,y2,'r');
-           xlim([(count-1)*10.24,count*10.24]);
-           drawnow;
-           hold on;
+               figure(1);
+               subplot(2,1,1);    
+               x = ((time-8)*1/102.41/102.4:time*1/102.4-1/102.4);
+               y2 = y1((i-8):(i-1));
+               plot(x,y2,'r');
+               xlim([(count-1)*10,count*10]);
+               drawnow;
+               hold on;
            end
            if(i~=9)
-           x = ((time-9)*0.01:0.01:time*0.01-0.01);
-           y2 = y1((i-9):(i-1));
-           plot(x,y2,'r');drawnow;
-           hold on;
+               x = ((time-9)*1/102.4:1/102.4:time*1/102.4-1/102.4);
+               y2 = y1((i-9):(i-1));
+               plot(x,y2,'r');
+               drawnow;
+               hold on;
            end
            if(i==1025)
-           clf;
-           radar_data(var*1024+1:var*1024+1024)=y1(1:1024);
-           var=var+1;
-           if(var==4)
-           save('xxx','radar_data');
-           var=0;
-           t1=1:4096;
-           subplot(2,1,2);
-           plot(t1,radar_data);
-           drawnow;
-           hold on;
-           end
+               clf;
+               radar_data(var*1024+1:var*1024+1024)=y1(1:1024);
+               var=var+1;
+               if(var==4)
+                   save('xxx','radar_data');
+                   var=0;
+                   t1=1:4096;
+                   subplot(2,1,2);
+                   plot(t1,radar_data);
+                   drawnow;
+                   hold on;
+               end
            end
         end
     toc;    
