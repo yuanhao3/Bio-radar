@@ -21,11 +21,15 @@ def Readname(filepath):
 def Data_plot(time_queue, all_datafile_name):
     for datafile_name in all_datafile_name:
         filename = filepath + '/' + datafile_name
+        
+        # 防止加载非.mat文件
         if filename[-1] == 't':
             radar_data = loadmat(filename)
             keys = radar_data.keys()
             keys = str(keys)
             data_key = ''
+            
+            # loadmat函数返回字典，数据存储在最后一个key中
             for i in range(-4, -1000, -1):
                 if keys[i] == '\'':
                     break
