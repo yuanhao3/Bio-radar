@@ -73,8 +73,10 @@ while(1)
                if(var==4)
                    save('xxx','radar_data');
                    var=0;
-                   t1=1:4096;
+                   
+                   % 对4个周期内的所有数据进行绘图
                    subplot(2,1,2);
+                   t1=1:4096;
                    plot(t1,radar_data);
                    drawnow;
                    hold on;
