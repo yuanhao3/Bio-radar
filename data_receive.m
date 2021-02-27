@@ -30,7 +30,6 @@ while(1)
         end
         if (mod(cnt,80) == 0)
            for n=1:1:8
-           figure(1);
            y(i) = str2num(data((i-1)*10+1:(i-1)*10+8));
            %y1(i) = bitshift(y(i),-4);
            y1(i) = y(i)*3/4095;
